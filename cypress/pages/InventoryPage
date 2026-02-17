@@ -36,6 +36,7 @@ class InventoryPage {
 
     //assertions
     verifyPageLoaded(){
+        cy.url().should('include', '/inventory.html')
         this.elements.pageTitle().should('be.visible').and('contain', 'Products')
     }
 

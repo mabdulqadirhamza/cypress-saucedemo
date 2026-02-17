@@ -1,9 +1,11 @@
 const { defineConfig } = require('cypress')
-require('dotenv').config()
+const dotenv = require('dotenv')
+
+dotenv.config()
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: 'https://www.saucedemo.com',
+    baseUrl: process.env.CYPRESS_BASE_URL,  
     env: {
       username:        process.env.CYPRESS_USERNAME,
       password:        process.env.CYPRESS_PASSWORD,

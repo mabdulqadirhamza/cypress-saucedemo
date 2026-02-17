@@ -1,0 +1,16 @@
+{
+  "errorMessages": {
+    "invalidLogin": "Username and password do not match any user in this service"
+  },
+  "checkout": {
+    "firstName": "Abdul",
+    "lastName": "Qadir",
+    "postalCode": "12345"
+  },
+  "urls": {
+    "loginPage": "/",
+    "inventoryPage": "/inventory.html",
+    "cartPage": "/cart.html",
+    "checkoutComplete": "/checkout-complete.html"
+  }
+}

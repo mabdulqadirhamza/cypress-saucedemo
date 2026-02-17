@@ -8,7 +8,11 @@ const inventoryPage = new InventoryPage()
 const cartPage = new CartPage()
 const checkoutPage = new CheckoutPage()
 
-describe('SauceDemo - E2E Flow', () => {
+describe('SauceDemo - POM E2E Flow', () => {
+
+    beforeEach(() => {
+        cy.fixture('testdata').as('testdata')
+    })
 
     it('Should login successfully with valid credentials', () => {
         loginPage.Login(
@@ -27,15 +31,15 @@ describe('SauceDemo - E2E Flow', () => {
         inventoryPage.verifyCartBadgeVisible()
     })
 
-    it('Invalid login should show error message', () => {
+    it('Invalid login should show error message', function() {
         loginPage.Login(
             Cypress.env('invalidUsername'),
             Cypress.env('invalidPassword')      
         )
-        loginPage.verifyErrorMessage('Username and password do not match any user in this service')
+        loginPage.verifyErrorMessage(this.testdata.errorMessages.invalidLogin)
     })
 
-    it('Complete checkout flow', () => {
+    it('Complete checkout flow', function() {
         loginPage.Login(
             Cypress.env('username'),
             Cypress.env('password')
@@ -44,7 +48,7 @@ describe('SauceDemo - E2E Flow', () => {
         inventoryPage.goToCart()
         cartPage.verifyPageLoaded()
         cartPage.proceedToCheckout()
-        checkoutPage.fillCustomerInfo('Abdul', 'Qadir', '12345')
+        checkoutPage.fillCustomerInfo(this.testdata.checkout.firstName, this.testdata.checkout.lastName, this.testdata.checkout.postalCode)
         checkoutPage.finishOrder()
         checkoutPage.verifyOrderComplete()
      })
@@ -70,13 +74,12 @@ describe('SauceDemo - E2E Flow', () => {
         inventoryPage.verifySortedByPriceLowToHigh()
     })
 
-    it('logout should redirect to login page', () => {
+    it('logout should redirect to login page', function() {
         loginPage.Login(
             Cypress.env('username'),  
             Cypress.env('password')
         )   
         inventoryPage.logout()
-        cy.url().should('include', 'https://www.saucedemo.com/')
-        loginPage.elements.Loginbutton().should('be.visible')
+        loginPage.verifyOnLoginPage(this.testdata.urls.loginPage)
         })
     })

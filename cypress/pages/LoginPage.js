@@ -35,6 +35,11 @@ class LoginPage{
     verifyErrorMessage(message){
         this.elements.errorMessage().should('be.visible').and('contain', message)
     }
+
+    verifyOnLoginPage(url){
+        cy.url().should('include', url)
+        this.elements.Loginbutton().should('be.visible')
+    }
 }
 
 export default LoginPage

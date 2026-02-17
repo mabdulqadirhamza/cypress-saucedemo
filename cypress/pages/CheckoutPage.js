@@ -24,7 +24,8 @@ class CheckoutPage {
 
     //assertions
     verifyOrderComplete(){
-        this.elements.successHeader().should('be.visible').and('contain', 'Thank you for your order!') 
+        cy.url().should('include', '/checkout-complete.html')
+        this.elements.successHeader().should('be.visible')
     }
 }
 
