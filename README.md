@@ -1,4 +1,4 @@
-# 🧪 Cypress SauceDemo E2E Tests
+#  Cypress SauceDemo E2E Tests
 
 ![Cypress](https://img.shields.io/badge/Cypress-E2E-green)
 ![Node](https://img.shields.io/badge/Node-v14+-blue)
@@ -7,7 +7,7 @@ End-to-end test automation for [SauceDemo](https://www.saucedemo.com) built with
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 - [Cypress](https://www.cypress.io/) — E2E Testing Framework
 - Page Object Model — Clean, maintainable test architecture
@@ -16,12 +16,12 @@ End-to-end test automation for [SauceDemo](https://www.saucedemo.com) built with
 
 ---
 
-## 📋 Prerequisites
+##  Prerequisites
 - Node.js (v14 or higher)
 - npm or yarn
 
 
-## 📁 Project Structure
+##  Project Structure
 
 ```
 cypress/
@@ -36,7 +36,7 @@ cypress/
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 **1. Clone the repo**
 ```bash
@@ -73,7 +73,7 @@ npx cypress run
 
 ---
 
-## 🧪 Test Scenarios
+##  Test Scenarios
 
 | # | Test | Status |
 |---|------|--------|
@@ -87,7 +87,7 @@ npx cypress run
 
 ---
 
-## ⚙️ Environment Variables
+##  Environment Variables
 
 | Variable | Description |
 |----------|-------------|
@@ -97,4 +97,4 @@ npx cypress run
 | `CYPRESS_INVALID_USERNAME` | Invalid login username |
 | `CYPRESS_INVALID_PASSWORD` | Invalid login password |
 
-> ⚠️ Never commit `.env` to version control!
+>  Never commit `.env` to version control!
