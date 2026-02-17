@@ -109,7 +109,7 @@ describe('SauceDemo - Basic E2E Flow', () => {
         })
         })
 
-    it.only('logout should redirect to login page', () => {
+    it('logout should redirect to login page', () => {
         cy.visit('https://www.saucedemo.com')
         cy.get('#user-name').type('standard_user')
         cy.get('#password').type('secret_sauce')
