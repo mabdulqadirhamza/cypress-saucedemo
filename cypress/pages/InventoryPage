@@ -1,0 +1,64 @@
+class InventoryPage {
+    //selectors
+    elements = {
+        pageTitle: () => cy.get('.title'),
+        sortDropdown:   () => cy.get('[data-test="product-sort-container"]'),
+        itemPrice: () => cy.get('.inventory_item_price'),
+        cartBadge: () => cy.get('.shopping_cart_badge'),
+        cartLink: () => cy.get('.shopping_cart_link'),
+        burgerMenu: () => cy.get('#react-burger-menu-btn'),
+        logoutLink: () => cy.get('#logout_sidebar_link'),
+        addBackpackButton: () => cy.get('[data-test="add-to-cart-sauce-labs-backpack"]'),
+        removeBackpackButton: () => cy.get('[data-test="remove-sauce-labs-backpack"]')
+    }
+
+    //actions
+    addBackpackButton(){
+        this.elements.addBackpackButton().click()
+    }
+
+    removeBackpackButton(){
+        this.elements.removeBackpackButton().click()
+    }
+
+    goToCart(){
+        this.elements.cartLink().click()
+    }
+
+    sortBy(option){
+        this.elements.sortDropdown().select(option)
+    }
+
+    logout(){
+        this.elements.burgerMenu().click()
+        this.elements.logoutLink().click()
+    }
+
+    //assertions
+    verifyPageLoaded(){
+        this.elements.pageTitle().should('be.visible').and('contain', 'Products')
+    }
+
+    verifyCartBadgeVisible() {
+        this.elements.cartLink().should('contain', '1')
+        this.elements.cartBadge().should('be.visible')
+    }
+
+    verifyCartEmpty() {
+        this.elements.cartLink().should('not.contain', '1')
+        this.elements.cartBadge().should('not.exist')
+    }
+
+    verifySortedByPriceLowToHigh() {
+        this.elements.itemPrices().then(($prices) => {
+            const prices = [...$prices].map(el =>
+                parseFloat(el.innerText.replace('$', ''))
+            )
+            for (let i = 1; i < prices.length; i++) {
+                expect(prices[i]).to.be.gte(prices[i - 1])
+            }
+        })
+    }
+}
+
+export default InventoryPage;
