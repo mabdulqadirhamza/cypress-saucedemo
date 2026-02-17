@@ -24,7 +24,7 @@ class CheckoutPage {
 
     //assertions
     verifyOrderComplete(){
-        this.elements.successHeader().should('be.visible').and('contain', 'THANK YOU FOR YOUR ORDER')
+        this.elements.successHeader().should('be.visible').and('contain', 'Thank you for your order!') 
     }
 }
 

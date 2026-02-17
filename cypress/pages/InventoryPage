@@ -3,7 +3,7 @@ class InventoryPage {
     elements = {
         pageTitle: () => cy.get('.title'),
         sortDropdown:   () => cy.get('[data-test="product-sort-container"]'),
-        itemPrice: () => cy.get('.inventory_item_price'),
+        itemPrices: () => cy.get('.inventory_item_price'),
         cartBadge: () => cy.get('.shopping_cart_badge'),
         cartLink: () => cy.get('.shopping_cart_link'),
         burgerMenu: () => cy.get('#react-burger-menu-btn'),
