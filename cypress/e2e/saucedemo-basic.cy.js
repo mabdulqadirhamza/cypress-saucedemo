@@ -40,6 +40,6 @@ describe('SauceDemo - Basic E2E Flow', () => {
         cy.get('#login-button').click()
 
         //assertions
-        
+        cy.get('[data-test="error"]').should('be.visible').and('contain', 'Username and password do not match any user in this service')
 })
 })
