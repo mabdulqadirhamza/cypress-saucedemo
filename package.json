@@ -1,6 +1,14 @@
 {
   "devDependencies": {
     "cypress": "^15.10.0",
-    "dotenv": "^17.3.1"
-  }
+    "dotenv": "^17.3.1",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.1",
+    "mochawesome-report-generator": "^6.3.2"
+  },
+  "scripts": {
+  "cy:open":   "cypress open",
+  "cy:run":    "cypress run",
+  "report":    "npx mochawesome-merge cypress/reports/*.json -o cypress/reports/final-report.json && npx marge cypress/reports/final-report.json -o cypress/reports"
+}
 }

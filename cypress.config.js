@@ -5,7 +5,14 @@ dotenv.config()
 
 module.exports = defineConfig({
   e2e: {
-    baseUrl: process.env.CYPRESS_BASE_URL,  
+    baseUrl: process.env.CYPRESS_BASE_URL,
+    reporter: 'mochawesome',
+    reporterOptions: {
+      reportDir: 'cypress/reports',
+      overwrite: false,
+      html: true,
+      json: true,
+    }, 
     env: {
       username:        process.env.CYPRESS_USERNAME,
       password:        process.env.CYPRESS_PASSWORD,

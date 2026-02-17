@@ -1,8 +1,5 @@
 #  Cypress SauceDemo E2E Tests
 
-![Cypress](https://img.shields.io/badge/Cypress-E2E-green)
-![Node](https://img.shields.io/badge/Node-v14+-blue)
-
 End-to-end test automation for [SauceDemo](https://www.saucedemo.com) built with Cypress and the Page Object Model pattern.
 
 ---
@@ -13,13 +10,9 @@ End-to-end test automation for [SauceDemo](https://www.saucedemo.com) built with
 - Page Object Model — Clean, maintainable test architecture
 - Fixtures — Centralized test data
 - dotenv — Secure credential management
+- [Mochawesome](https://github.com/adamgruber/mochawesome) — HTML Test Reporting
 
 ---
-
-##  Prerequisites
-- Node.js (v14 or higher)
-- npm or yarn
-
 
 ##  Project Structure
 
@@ -27,6 +20,10 @@ End-to-end test automation for [SauceDemo](https://www.saucedemo.com) built with
 cypress/
 ├── e2e/           # Test files
 ├── fixtures/      # Test data (testdata.json)
+├── reports/       # Generated test reports (gitignored)
+├── support/       # Support files
+│   ├── commands.js
+│   └── e2e.js
 └── pages/         # Page Object Classes
     ├── LoginPage.js
     ├── InventoryPage.js
@@ -71,6 +68,12 @@ npx cypress open
 npx cypress run
 ```
 
+**5. Generate report**
+```bash
+npm run report
+```
+Open `cypress/reports/final-report.html` in your browser 🎉
+
 ---
 
 ##  Test Scenarios
@@ -84,6 +87,19 @@ npx cypress run
 | 5 | Remove item from cart | ✅ |
 | 6 | Sort products by price | ✅ |
 | 7 | Logout redirects to login | ✅ |
+
+---
+
+##  Reporting
+
+This project uses **Mochawesome** to generate beautiful HTML reports.
+
+```bash
+# Run tests and generate report in one go
+npx cypress run && npm run report
+```
+
+Reports are saved to `cypress/reports/` and ignored by git.
 
 ---
 
